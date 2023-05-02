@@ -9,7 +9,9 @@ export const files = {
   const port = 3111;
   
   app.get('/', (req, res) => {
-    res.send('Welcome to a WebContainers app! 🥳\n Now you can edit this source code \n then automatically applied what has been changed');
+    res.send(\`Welcome to a WebContainers app! 🥳
+    Now you can edit this source code
+    then automatically applied what has been change\`);
   });
   
   app.listen(port, () => {

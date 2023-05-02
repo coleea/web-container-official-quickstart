@@ -1,11 +1,11 @@
-import { files } from './files';
 import './index.css'
+import { files } from './files';
 import { WebContainer } from '@webcontainer/api';
 
 let webcontainerInstance: WebContainer;
 
-const iframeEl = document.querySelector('iframe');
-const textareaEl = document.querySelector('textarea');
+const iframeEl = document.querySelector('iframe')!;
+const textareaEl = document.querySelector('textarea')!;
 
 window.addEventListener('load', async () => {
 
@@ -14,11 +14,10 @@ window.addEventListener('load', async () => {
   webcontainerInstance = await WebContainer.boot();
 
   textareaEl && textareaEl.addEventListener('input', (e) => {
-    writeIndexJS(e.currentTarget.value)
+    writeIndexJS((e.currentTarget as any).value)
   })
   
   await webcontainerInstance.mount(files);
-
   
   const packageJSON = await webcontainerInstance.fs.readFile('package.json', 'utf-8');
   const exitCode = await installDependencies(webcontainerInstance)
@@ -33,8 +32,10 @@ async function installDependencies(webcontainerInstance : any) {
   installProcess.output.pipeTo(new WritableStream({
     write(data) {
       const logElem = document.querySelector('.log textarea')
-      if(logElem) logElem.textContent += '\n' + data ;
-      console.log(data);
+      if(logElem) {
+        logElem.textContent += '\n' + data ;
+        // logElem.scrollTo(0, logElem.scrollHeight)        
+      }      
     }
   }));
   return installProcess.exit;
