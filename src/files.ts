@@ -4,18 +4,18 @@ export const files = {
     'index.js': {
       file: {
         contents: `
-        import * as Effect from "@effect/io/Effect";
-        import { pipe } from "@effect/data/Function";
-        import * as Either from "@effect/data/Either";
-        import * as Layer from "@effect/io/Layer";
-        import * as Context from "@effect/data/Context";
-        
-        (function basicOperation() {
-            const sync = Effect.sync(() => "Hello World");
-            console.log(
-                Effect.runSync(sync)
-            );        
-        })();
+import * as Effect from "@effect/io/Effect";
+import { pipe } from "@effect/data/Function";
+import * as Either from "@effect/data/Either";
+import * as Layer from "@effect/io/Layer";
+import * as Context from "@effect/data/Context";
+
+(function basicOperation() {
+    const sync = Effect.sync(() => "Hello World");
+    console.log(
+        Effect.runSync(sync)
+    );        
+})();
   `,
       },
     },
