@@ -4,19 +4,19 @@ export const files = {
     'index.js': {
       file: {
         contents: `
-  import express from 'express';
-  const app = express();
-  const port = 3111;
-  
-  app.get('/', (req, res) => {
-    res.send(\`Welcome to a WebContainers app! 🥳
-    Now you can edit this source code
-    then automatically applied what has been change\`);
-  });
-  
-  app.listen(port, () => {
-    console.log(\`App is live at http://localhost:\${port}\`);
-  });`,
+        import * as Effect from "@effect/io/Effect";
+        import { pipe } from "@effect/data/Function";
+        import * as Either from "@effect/data/Either";
+        import * as Layer from "@effect/io/Layer";
+        import * as Context from "@effect/data/Context";
+        
+        (function basicOperation() {
+            const sync = Effect.sync(() => "Hello World");
+            console.log(
+                Effect.runSync(sync)
+            );        
+        })();
+  `,
       },
     },
     'package.json': {
@@ -27,7 +27,9 @@ export const files = {
     "type": "module",
     "dependencies": {
       "express": "latest",
-      "nodemon": "latest"
+      "nodemon": "latest",
+      "@effect/io": "latest",
+      "@effect/data": "latest"
     },
     "scripts": {
       "start": "nodemon --watch './' index.js"

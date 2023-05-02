@@ -17,12 +17,12 @@ body {
 
 textarea {
   background-image: 
-    radial-gradient(
-      farthest-corner circle at top right in oklab, 
-      oklch(80% .4 222) 0%, oklch(35% .5 313) 100%
+    conic-gradient(
+      from 0deg at top left in oklch, 
+      oklch(0% 0.50 156) 0%, oklch(70% 0.5 261) 100%
     )
   ;
-  font-size: 1.5em;
+  font-size: 1.8em;
   font-weight: 500;
   width: 100%;
   height: 100%;

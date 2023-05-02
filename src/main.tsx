@@ -34,7 +34,7 @@ async function installDependencies(webcontainerInstance : any) {
       const logElem = document.querySelector('.log textarea')
       if(logElem) {
         logElem.textContent += '\n' + data ;
-        // logElem.scrollTo(0, logElem.scrollHeight)        
+        // logElem.scrollTo(0, logElem.scrollHeight);
       }      
     }
   }));
